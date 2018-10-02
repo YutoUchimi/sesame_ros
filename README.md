@@ -8,6 +8,15 @@ ROS API for Sesame smart lock made by CANDY HOUSE, Inc.
 You have to create your auth token by logging into the CANDY HOUSE Dashboard: https://my.candyhouse.co/
 
 
+## Requirements
+
+Install some python packages via pip.
+
+```
+$ sudo pip install -r requirements.txt
+```
+
+
 ## Parameters
 
 - `~auth_token` (`string`, required): Your auth token.
@@ -29,6 +38,7 @@ You have to create your auth token by logging into the CANDY HOUSE Dashboard: ht
 ## Defined service list
 
 - __sesame_ros/Status__
+
 ```
 ---
 string nickname
@@ -40,6 +50,7 @@ bool responsive
 ```
 
 - __sesame_ros/Command__
+
 ```
 ---
 string status
