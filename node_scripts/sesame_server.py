@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-import requests
 import time
 
 import numpy as np
+import requests
 
 import rospy
 from sesame_ros.srv import Command
@@ -37,11 +37,11 @@ class SesameServer(object):
                         self.sesame = sesame_
             else:
                 rospy.logwarn(
-                    '~device_id is not specified. The first will be chosen.')
+                    '~device_id is not specified. The first will be used.')
                 self.sesame = sesames[0]
         else:
             rospy.logerr('[{}] {}'.format(ret.status_code, ret.text))
-            rospy.logerr('No sesames detected.')
+            rospy.logerr('No sesames found.')
             self.sesame = {'nickname': None, 'serial': None, 'device_id': None}
 
     def _get_sesame_status(self):
