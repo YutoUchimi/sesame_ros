@@ -17,7 +17,7 @@ class SesameServer(object):
     def __init__(self):
         self.auth_token = rospy.get_param('~auth_token')
         self.device_id = rospy.get_param('~device_id', None)
-        self.command_timeout = 3
+        self.command_timeout = 60
         self.status_server = rospy.Service(
             '~get_status', Status, self.get_sesame_status)
         self.sync_server = rospy.Service(
@@ -107,6 +107,9 @@ class SesameServer(object):
         while status != 'terminated':
             if time.time() > time_limit:
                 rospy.logerr('Operation Timeout. command: {}'.format(command))
+                # Wait for updating status
+                time.sleep(5.0)
+                status, successful, error = self._get_task_status(task_id)
                 break
             elif status is None:
                 rospy.logerr('Task status is None.')
@@ -114,9 +117,6 @@ class SesameServer(object):
             else:  # status == 'processing'
                 time.sleep(1.0)
                 status, successful, error = self._get_task_status(task_id)
-        # Update status
-        time.sleep(5.0)
-        status, successful, error = self._get_task_status(task_id)
         return status, successful, error
 
     def force_sync(self, req):
