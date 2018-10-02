@@ -1,6 +1,10 @@
 #!/usr/bin/env python
+# flake8: noqa
 
 import time
+import warnings
+
+warnings.filterwarnings('ignore')
 
 import numpy as np
 import requests
