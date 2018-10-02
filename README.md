@@ -1,18 +1,65 @@
 # sesame_ros
 
-ROS API for Sesame Smartlock made by CANDY HOUSE, Inc.
+ROS API for Sesame smart lock made by CANDY HOUSE, Inc.
 
 
 ## API key
 
-You have to get API key from CANDY HOUSE Dashboard: https://my.candyhouse.co/
+You have to create your auth token by logging into the CANDY HOUSE Dashboard: https://my.candyhouse.co/
+
+
+## Parameters
+
+- `~auth_token` (`string`, required): Your auth token.
+
+- `~device_id` (`string`, optional): UUID of your Sesame. If not specified, the first found Sesame will be used.
+
+
+## Advertising services
+
+- `~get_status` (`sesame_ros/Status`)
+
+- `~lock` (`sesame_ros/Command`)
+
+- `~unlock` (`sesame_ros/Command`)
+
+- `~force_sync` (`sesame_ros/Command`)
+
+
+## Defined service list
+
+- __sesame_ros/Status__
+```
+---
+string nickname
+string serial
+string device_id
+int32 battery
+bool locked
+bool responsive
+```
+
+- __sesame_ros/Command__
+```
+---
+string status
+bool successful
+string error
+```
 
 
 ## Usage
 
+0. Build this package.
+```
+$ cd YOUR_CATKIN_WS
+$ catkin build sesame_ros
+```
+
 1. Start service server.
 ```
-$ rosrun sesame_ros sesame_server.py _auth_token:=YOUR_AUTH_TOKEN
+$ roscore
+$ rosrun sesame_ros sesame_server.py _auth_token:=YOUR_AUTH_TOKEN _device_id:=YOUR_SESAME's_UUID
 ```
 
 2. Call service.
