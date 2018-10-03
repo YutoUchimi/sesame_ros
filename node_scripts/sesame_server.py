@@ -22,6 +22,7 @@ class SesameServer(object):
     def __init__(self):
         self.auth_token = rospy.get_param('~auth_token')
         self.device_id = rospy.get_param('~device_id', None)
+        self.nickname = rospy.get_param('~nickname', None)
         self.command_timeout = rospy.get_param('~command_timeout', 60)
         self.status_server = rospy.Service(
             '~get_status', Status, self.get_sesame_status)
@@ -36,12 +37,33 @@ class SesameServer(object):
             headers={'Authorization': self.auth_token})
         if ret.status_code == 200:
             sesames = ret.json()
-            if self.device_id is not None:
+            # Search by device_id or nickname
+            if self.device_id is not None or self.nickname is not None:
+                # First, search by device_id
                 for sesame_ in sesames:
                     if self.device_id == sesame_['device_id']:
                         self.sesame = sesame_
+                        break
+                # Second, search by nickname
+                if not hasattr(self, 'sesame'):
+                    for sesame_ in sesames:
+                        if self.nickname == sesame_['nickname'] and \
+                           not hasattr(self, 'sesame'):
+                            self.sesame = sesame_
+                        elif (self.nickname == sesame_['nickname'] and
+                              hasattr(self, 'sesame')):
+                            rospy.logwarn(
+                                'Multiple Sesames found for nickname [{}]. \
+The first found Sesame will be used.'.format(self.nickname))
+                            continue
+                if not hasattr(self, 'sesame'):
+                    rospy.logwarn(
+                        'Neither [~device_id] nor [~nickname] matched. \
+The first found Sesame will be used.')
+                    self.sesame = sesames[0]
             else:
-                rospy.logwarn('param [~device_id] is not specified. \
+                rospy.logwarn(
+                    'Neither [~device_id] nor [~nickname] is specified. \
 The first found Sesame will be used.')
                 self.sesame = sesames[0]
         else:
