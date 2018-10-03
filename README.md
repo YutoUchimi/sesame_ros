@@ -2,12 +2,14 @@
 
 ROS API for Sesame smart lock made by CANDY HOUSE, Inc.
 
+![](images/sesame_ros_system.png)
+
 
 ## API key
 
 You have to create your auth token by logging into the CANDY HOUSE Dashboard: https://my.candyhouse.co/
 
-Note that you must be the owner of your Sesame in order to use web API.
+Note that you must be the owner of your Sesame in order to use Web API.
 
 Please make sure you can see the list of Sesames on CANDY HOUSE Dashboard.
 
