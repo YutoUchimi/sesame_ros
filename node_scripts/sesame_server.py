@@ -1,19 +1,20 @@
 #!/usr/bin/env python
-# flake8: noqa
 
 import time
 import warnings
 
-warnings.filterwarnings('ignore')
-
 import numpy as np
-import requests
 
-import rospy
-from sesame_ros.srv import Command
-from sesame_ros.srv import CommandResponse
-from sesame_ros.srv import Status
-from sesame_ros.srv import StatusResponse
+# https://github.com/YutoUchimi/sesame_ros/issues/1
+warnings.filterwarnings('ignore')
+import requests  # NOQA
+warnings.resetwarnings()
+
+import rospy  # NOQA
+from sesame_ros.srv import Command  # NOQA
+from sesame_ros.srv import CommandResponse  # NOQA
+from sesame_ros.srv import Status  # NOQA
+from sesame_ros.srv import StatusResponse  # NOQA
 
 
 class SesameServer(object):
