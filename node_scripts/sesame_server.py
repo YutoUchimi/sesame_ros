@@ -21,7 +21,7 @@ class SesameServer(object):
     def __init__(self):
         self.auth_token = rospy.get_param('~auth_token')
         self.device_id = rospy.get_param('~device_id', None)
-        self.command_timeout = 60
+        self.command_timeout = rospy.get_param('~command_timeout', 60)
         self.status_server = rospy.Service(
             '~get_status', Status, self.get_sesame_status)
         self.sync_server = rospy.Service(

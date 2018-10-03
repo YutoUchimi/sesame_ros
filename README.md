@@ -25,9 +25,11 @@ $ sudo pip install -r requirements.txt
 
 ## Parameters
 
-- `~auth_token` (`string`, required): Your auth token.
+- `~auth_token` (`string`, __required__): Your auth token.
 
 - `~device_id` (`string`, optional): UUID of your Sesame. If not specified, the first found Sesame will be used.
+
+- `~command_timeout` (`int` or `float`, optional): Timeout for executing commands. Default is 60 [sec].
 
 
 ## Advertising services
