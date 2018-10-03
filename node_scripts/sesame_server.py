@@ -40,12 +40,12 @@ class SesameServer(object):
                     if self.device_id == sesame_['device_id']:
                         self.sesame = sesame_
             else:
-                rospy.logwarn(
-                    '~device_id is not specified. The first will be used.')
+                rospy.logwarn('param [~device_id] is not specified. \
+The first found Sesame will be used.')
                 self.sesame = sesames[0]
         else:
             rospy.logerr('[{}] {}'.format(ret.status_code, ret.text))
-            rospy.logerr('No sesames found.')
+            rospy.logerr('No Sesames found.')
             self.sesame = {'nickname': None, 'serial': None, 'device_id': None}
 
     def _get_sesame_status(self):
