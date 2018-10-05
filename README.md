@@ -14,13 +14,11 @@ Note that you must be the owner of your Sesame in order to use Web API.
 Please make sure you can see the list of Sesames on CANDY HOUSE Dashboard.
 
 
-## Install Requirements
+## Python Package Requirements
 
-Install some python packages via pip.
+This package supports catkin_virtualenv.
 
-```
-$ sudo pip install -r requirements.txt
-```
+So, pip dependencies written in `requirements.txt` will be automatically installed into venv while building.
 
 
 ## Parameters
