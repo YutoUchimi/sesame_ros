@@ -1,5 +1,8 @@
 # sesame_ros
 
+[![GitHub version](https://badge.fury.io/gh/YutoUchimi%2Fsesame_ros.svg)](https://badge.fury.io/gh/YutoUchimi%2Fsesame_ros)
+[![Build Status](https://travis-ci.org/YutoUchimi/sesame_ros.svg)](https://travis-ci.org/YutoUchimi/sesame_ros)
+
 ROS API for Sesame smart lock made by CANDY HOUSE, Inc.
 
 ![](images/sesame_ros_system.png)
