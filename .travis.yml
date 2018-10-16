@@ -1,0 +1,28 @@
+sudo: required
+dist: trusty
+services:
+  - docker
+language: generic
+compiler:
+  - gcc
+notifications:
+  email:
+    recipients:
+      - momosama1072@gmail.com
+env:
+  global:
+    # To avoid memory error on Travis
+    - ROS_PARALLEL_JOBS=-j1
+    - ROS_PARALLEL_TEST_JOBS=-j1
+  matrix:
+    - ROS_DISTRO="indigo" OS_NAME=ubuntu OS_CODE_NAME=trusty
+    - ROS_DISTRO="kinetic" OS_NAME=ubuntu OS_CODE_NAME=xenial
+    - ROS_DISTRO="melodic" OS_NAME=ubuntu OS_CODE_NAME=bionic
+
+install:
+  - git clone https://github.com/ros-industrial/industrial_ci.git .ci_config
+script:
+  - source .ci_config/travis.sh
+branches:
+  only:
+    - master
