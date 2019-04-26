@@ -53,18 +53,19 @@ class SesameServer(object):
                         elif (self.nickname == sesame_['nickname'] and
                               hasattr(self, 'sesame')):
                             rospy.logwarn(
-                                'Multiple Sesames found for nickname [{}]. \
-The first found Sesame will be used.'.format(self.nickname))
+                                'Multiple Sesames found for nickname [{}]. '
+                                'The first found Sesame will be used.'.
+                                format(self.nickname))
                             continue
                 if not hasattr(self, 'sesame'):
                     rospy.logwarn(
-                        'Neither [~device_id] nor [~nickname] matched. \
-The first found Sesame will be used.')
+                        'Neither [~device_id] nor [~nickname] matched. '
+                        'The first found Sesame will be used.')
                     self.sesame = sesames[0]
             else:
                 rospy.logwarn(
-                    'Neither [~device_id] nor [~nickname] is specified. \
-The first found Sesame will be used.')
+                    'Neither [~device_id] nor [~nickname] is specified. '
+                    'The first found Sesame will be used.')
                 self.sesame = sesames[0]
         else:
             rospy.logerr('[{}] {}'.format(ret.status_code, ret.text))
