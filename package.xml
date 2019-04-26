@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>sesame_ros</name>
-  <version>0.0.0</version>
+  <version>0.2.0</version>
   <description>ROS API for Sesame</description>
 
-  <maintainer email="uchimi@jsk.imi.i.u-tokyo.ac.jp">Yuto Uchimi</maintainer>
-  <author email="uchimi@jsk.imi.i.u-tokyo.ac.jp">Yuto Uchimi</author>
+  <maintainer email="momosama1072@gmail.com">Yuto Uchimi</maintainer>
+  <author email="momosama1072@gmail.com">Yuto Uchimi</author>
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
