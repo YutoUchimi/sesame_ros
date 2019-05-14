@@ -26,7 +26,7 @@ So, pip dependencies written in `requirements.txt` will be automatically install
 
 ## Parameters
 
-- `~auth_token` (`string`, __required__): Your auth token.
+- `~auth_token` (`string`, __required__): Your auth token. File name is also supported.
 
 - `~device_id` (`string`, optional): UUID of your Sesame.
 
