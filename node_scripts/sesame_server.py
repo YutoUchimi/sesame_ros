@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os.path as osp
 import time
 import warnings
 
@@ -20,7 +21,12 @@ from sesame_ros.srv import StatusResponse  # NOQA
 class SesameServer(object):
 
     def __init__(self):
-        self.auth_token = rospy.get_param('~auth_token')
+        auth_token = rospy.get_param('~auth_token')
+        if osp.isfile(osp.expanduser(auth_token)):
+            with open(osp.expanduser(auth_token), 'r') as f:
+                self.auth_token = f.readline().rstrip()
+        else:
+            self.auth_token = auth_token
         self.device_id = rospy.get_param('~device_id', None)
         self.nickname = rospy.get_param('~nickname', None)
         self.command_timeout = rospy.get_param('~command_timeout', 60)
