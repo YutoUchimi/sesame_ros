@@ -8,25 +8,38 @@ ROS API for Sesame smart lock made by CANDY HOUSE, Inc.
 ![](images/sesame_ros_system.png)
 
 
-## API key
+#### API key
 
-You have to create your auth token by logging into the CANDY HOUSE Dashboard: https://my.candyhouse.co/
+You have to create your authorization token by logging into the CANDY HOUSE Dashboard: https://my.candyhouse.co/
 
 Note that you must be the owner of your Sesame in order to use Web API.
 
 Please make sure you can see the list of Sesames on CANDY HOUSE Dashboard.
 
 
-## Python Package Requirements
+#### Python Package Requirements
 
-This package supports catkin_virtualenv.
+This package supports `catkin_virtualenv`.
 
-So, pip dependencies written in `requirements.txt` will be automatically installed into venv while building.
+So pip dependencies written in `requirements.txt` will be automatically installed into venv while building.
 
 
-## Parameters
+## list_sesames.py
 
-- `~auth_token` (`string`, __required__): Your auth token. File name is also supported.
+Script for listing your Sesames.
+
+#### Arguments
+
+- `auth_token`: Your authorization token. Path to its file is also supported.
+
+
+## sesame_server.py
+
+Node for controlling your Sesame.
+
+#### Parameters
+
+- `~auth_token` (`string`, __required__): Your authorization token. Path to its file is also supported.
 
 - `~device_id` (`string`, optional): UUID of your Sesame.
 
@@ -39,7 +52,7 @@ If neither of them matches or is specified, the first found Sesame will be used.
 - `~command_timeout` (`int` or `float`, optional): Timeout for executing commands. Default is 60 [sec].
 
 
-## Advertising services
+#### Advertising services
 
 - `~get_status` (`sesame_ros/Status`)
 
@@ -50,7 +63,7 @@ If neither of them matches or is specified, the first found Sesame will be used.
 - `~force_sync` (`sesame_ros/Command`)
 
 
-## Defined service list
+#### Defined service list
 
 - __sesame_ros/Status__
 

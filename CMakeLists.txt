@@ -29,8 +29,9 @@ catkin_generate_virtualenv(
 include_directories()
 
 file(GLOB NODE_SCRIPTS_FILES node_scripts/*)
+file(GLOB SCRIPTS_FILES scripts/*)
 catkin_install_python(
-  PROGRAMS ${NODE_SCRIPTS_FILES}
+  PROGRAMS ${NODE_SCRIPTS_FILES} ${SCRIPTS_FILES}
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
